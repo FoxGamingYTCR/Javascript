@@ -1,0 +1,81 @@
+console.warn("⚠ I shouldn't have to warn anyone about this but PLEASE don't paste ANY code you are not familiar with, someone may tell you to paste in a script saying it will help you with something, or some other reson but, the real reason is so you perform an attack known as SELF-XSS (Self cross-site scripting) to steal information or cause other problems for yourself. ⚠")
+
+/**
+ * Sanitizes user input to prevent cross-site scripting attacks.
+ *
+ * @param {string|number|boolean|object|Array} input The user input to sanitize.
+ * @param {RegExp|null} customWhitelist A regular expression specifying a custom whitelist of allowed characters.
+ * @returns {string|number|boolean|object|Array} The sanitized user input.
+ */
+function xssFilter(input, customWhitelist = null) {
+  const defaultWhitelist = /^[a-zA-Z0-9-_:/&?=,.]+$/;
+  const whitelist = customWhitelist || defaultWhitelist;
+
+  if (Array.isArray(input)) {
+    return input.map(value => xssFilter(value, whitelist));
+  }
+
+  if (typeof input !== 'string' && typeof input !== 'number' && typeof input !== 'boolean' && input !== null && typeof input !== 'undefined') {
+    throw new Error('Invalid input type. Expected string, number, boolean, object, or array.');
+  }
+
+  if (typeof input === 'string') {
+    const output = input.replace(/[\u00A0-\u9999<>&]/gim, function(i) {
+      return '&#'+i.charCodeAt(0)+';';
+    });
+
+    if (!whitelist.test(output)) {
+      throw new Error('Input contains disallowed characters.');
+    }
+
+    return output;
+  }
+
+  if (typeof input === 'number' || typeof input === 'boolean' || input === null || typeof input === 'undefined') {
+    return input;
+  }
+
+  throw new Error('Unexpected error occurred.');
+}
+
+class RequestLimiter {
+  constructor(limit, interval) {
+    if (!limit || !interval || limit <= 0 || interval <= 0) {
+      throw new Error('Limit and interval must be positive values');
+    }
+    this.limit = limit;
+    this.interval = interval;
+    this.count = 0;
+    this.lastReset = Date.now();
+  }
+
+  isAllowed() {
+    const now = Date.now();
+    if (now - this.lastReset > this.interval) {
+      this.count = 0;
+      this.lastReset = now;
+    }
+    if (this.count < this.limit) {
+      this.count++;
+      return true;
+    }
+    return false;
+  }
+}
+
+// Example usage:
+const limiter = new RequestLimiter(5, 10000);
+for (let i = 0; i < 10; i++) {
+  try {
+    if (limiter.isAllowed()) {
+      console.log(`Request ${i + 1} allowed.`);
+    } else {
+      console.log(`Request ${i + 1} denied.`);
+    }
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    break;
+  }
+  // Wait a random amount of time between requests (for demonstration purposes only)
+  setTimeout(() => {}, Math.floor(Math.random() * 5000));
+}
