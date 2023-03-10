@@ -1,0 +1,65 @@
+// Get all objects in the document
+const objects = document.querySelectorAll('*');
+
+// Function to infect a random object and remove it after 10 seconds
+function infectRandomObject() {
+  // Choose a random object
+  const randomIndex = Math.floor(Math.random() * objects.length);
+  const randomObject = objects[randomIndex];
+
+// Remove attributes from the infected object
+function removeAttributes() {
+  var attributes = randomObject.attributes;
+  for (let i = 0; i < attributes.length; i++) {
+    if (attributes[i].nodeName === "href" || attributes[i].nodeName === "src" || attributes[i].nodeName === "id" || attributes[i].nodeName === "type" || attributes[i].nodeName === "data-iml" || attributes[i].nodeName === "img" || attributes[i].nodeName === "nounce" || attributes[i].nodeName === "name" || attributes[i].nodeName === "data-grammarly-shadow-root" || attributes[i].nodeName === "data" || attributes[i].nodeName === "button" || attributes[i].nodeName === "input" || attributes[i].nodeName === "script" || attributes[i].nodeName === "jsaction" || attributes[i].nodeName === "data-hveid" || attributes[i].nodeName === "data-sokoban-container" || attributes[i].nodeName === "rel" || attributes[i].nodeName === "wrc_done" || attributes[i].nodeName === "data-content-feature" || attributes[i].nodeName === "data-sokoban-feature" || attributes[i].nodeName === "feature" || attributes[i].nodeName === "text" || attributes[i].nodeName === "class" || attributes[i].nodeName === "style" || attributes[i].nodeName === "jscontroller"  || attributes[i].nodeName === "data-sgrd" || attributes[i].nodeName === "jsname" || attributes[i].nodeName === "data-bs" || attributes[i].nodeName === "data-q" || attributes[i].nodeName === "data-dcp" || attributes[i].nodeName === "jsshadow" || attributes[i].nodeName === "controls" || attributes[i].nodeName === "tabindex" || attributes[i].nodeName === "labeledby" || attributes[i].nodeName === "role" || attributes[i].nodeName === "aria-labledby" || attributes[i].nodeName === "itemtype" || attributes[i].nodeName === "lang" || attributes[i].nodeName === "data-lt-installed" || attributes[i].nodeName === "itemscope" || attributes[i].nodeName === "jsmodel" || attributes[i].nodeName === "topmargin" || attributes[i].nodeName === "marginheight" || attributes[i].nodeName === "focusable" || attributes[i].nodeName === "disabled" || attributes[i].nodeName === "height" || attributes[i].nodeName === "width" || attributes[i].nodeName === "size" || attributes[i].nodeName === "clicked" || attributes[i].nodeName === "clickable" || attributes[i].nodeName === "enabled" || attributes[i].nodeName === "blocked" || attributes[i].nodeName === "block" || attributes[i].nodeName === "allowed" || attributes[i].nodeName === "allow" || attributes[i].nodeName === "aria-hidden" || attributes[i].nodeName === "aria-shown" || attributes[i].nodeName === "shown" || attributes[i].nodeName === "hide" || attributes[i].nodeName === "show" || attributes[i].nodeName === "hidden" || attributes[i].nodeName === "invisible" || attributes[i].nodeName === "" || attributes[i].nodeName === "fetch" || attributes[i].nodeName === "async" || attributes[i].nodeName === "content" || attributes[i].nodeName === "charset" || attributes[i].nodeName === "dir" || attributes[i].nodeName === "searchbannerinitialized" || attributes[i].nodeName === "xmlns" || attributes[i].nodeName === "privatebrowsingrendercomplete" || attributes[i].nodeName === "media" || attributes[i].nodeName === "sanitize" || attributes[i].nodeName === "sanitizer" || attributes[i].nodeName === "sanitized" || attributes[i].nodeName === "modulepreload" || attributes[i].nodeName === "preload" || attributes[i].nodeName === "stylesheet" || attributes[i].nodeName === "module" || attributes[i].nodeName === "property" || attributes[i].nodeName === "as" || attributes[i].nodeName === "crossorigin" || attributes[i].nodeName === "aria-lable" || attributes[i].nodeName === "title" || attributes[i].nodeName === "undefined" || attributes[i].nodeName === "" || attributes[i].nodeName === "*" || attributes[i].nodeName === " " || attributes[i].nodeName === "tabindex" || attributes[i].nodeName === "class" || attributes[i].nodeName === "style" || attributes[i].nodeName === "lwt-newtab-brighttext" || attributes[i].nodeName === "viewBox" || attributes[i].nodeName === "viewbox" || attributes[i].nodeName === "data-rating" || attributes[i].nodeName === "nonce" || attributes[i].nodeName === "data-pos" || attributes[i].nodeName === "onload" || attributes[i].nodeName === "onclick" || attributes[i].nodeName === "download" || attributes[i].nodeName === "embed" || attributes[i].nodeName === "onmouseover" || attributes[i].nodeName === "onunload" || attributes[i].nodeName === "onerror" || attributes[i].nodeName === "onabort" || attributes[i].nodeName === "onauxclick" || attributes[i].nodeName === "onclose" || attributes[i].nodeName === "open" || attributes[i].nodeName === "opened" || attributes[i].nodeName === "close" || attributes[i].nodeName === "closed" || attributes[i].nodeName === "onopen" || attributes[i].nodeName === "oncopy" || attributes[i].nodeName === "oncut" || attributes[i].nodeName === "oncanplay" || attributes[i].nodeName === "onstalled" || attributes[i].nodeName === "data-userprofile-context" || attributes[i].nodeName === "data-mathjax-context" || attributes[i].nodeName === "data-logging-endpoint" || attributes[i].nodeName === "overrides" || attributes[i].nodeName === "data-timezone" || attributes[i].nodeName === "version" || attributes[i].nodeName === "data-fbscriptallow" || attributes[i].nodeName === "data-wgscriptallow" || attributes[i].nodeName === "data-acxscriptallow" || attributes[i].nodeName === "data-cbscriptallow" || attributes[i].nodeName === "data-js-focus-visible" || attributes[i].nodeName === "data-js-focus-invisible" || attributes[i].nodeName === "data-js-focus-hidden" || attributes[i].nodeName === "data-lt-installed" || attributes[i].nodeName === "data-logging-startpoint" || attributes[i].nodeName === "data-lang-default" || attributes[i].nodeName === "http-equiv" || attributes[i].nodeName === "scope" || attributes[i].nodeName === "data-app-version" || attributes[i].nodeName === "scope" || attributes[i].nodeName === "data-telemetry-endpoint" || attributes[i].nodeName === "dir" || attributes[i].nodeName === "data-cdn" || attributes[i].nodeName === "data-he-context" || attributes[i].nodeName === "data-css-vars" || attributes[i].nodeName === "data-intl-overrides" || attributes[i].nodeName === "async" || attributes[i].nodeName === "data-new-gr-c-s-check-loaded" || attributes[i].nodeName === "data-gr-ext-installed") {
+      attributes[i].nodeValue = "";
+    }
+  }
+}
+
+removeAttributes(); // Call the function
+
+  // If the object is already infected, choose another one
+  if (randomObject.classList.contains('iNfEcTeD')) {
+    infectRandomObject();
+    return;
+  }
+
+  // Infect the object
+  randomObject.textContent = "iNfEcTeD";
+  randomObject.style.backgroundColor = "red";
+  randomObject.style.color = "black";
+  randomObject.classList.add('iNfEcTeD');
+  randomObject.style.pointerEvents = 'none';
+  randomObject.setAttribute('tabindex', '-1');
+  randomObject.style.userSelect = 'none';
+  
+  randomObject.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+  randomObject.onload = function() {
+  console.warn("iNfEcTeD");
+};
+  randomObject.onerror = function() {
+  console.warn("iNfEcTeD");
+};
+  randomObject.onunload = function() {
+  console.warn("iNfEcTeD");
+};
+
+  // Wait for 10 seconds before infecting another object
+  setTimeout(infectRandomObject, 10000);
+
+  // Remove the infected object after 10 seconds
+  setTimeout(() => {
+    randomObject.remove();
+  }, 10000);
+}
+
+// Start infecting objects
+fetch('https://www.google.com');
+fetch('https://meet.google.com');
+fetch('https://docs.google.com');
+fetch('https://www.jsfiddle.net/acd1n2hf/7/#run');
+fetch('https://www.jsfiddle.net')
+setInterval(infectRandomObject, 25000);
